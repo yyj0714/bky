@@ -299,7 +299,7 @@ table.datatable tr:hover td{background:var(--bg-panel-2);}
 
 <script>
   // REELTRACK — 보안 및 검색 차트 연동용 비밀번호 시스템
-  const correctPassword = "0714"; // 사용자가 원할 때 이 부분을 수정해서 비밀번호를 바꿀 수 있습니다.
+  const correctPassword = "1234"; // 사용자가 원할 때 이 부분을 수정해서 비밀번호를 바꿀 수 있습니다.
   const userInput = prompt("REELTRACK — 프로젝트 접근 비밀번호를 입력하세요:");
 
   if (userInput === correctPassword) {
@@ -357,469 +357,67 @@ const PALETTE = ['#f2b84b','#4fd1c5','#e2725b','#8ab4f8','#c792ea','#82d9a4','#f
 function uid(prefix){ return prefix + '_' + Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
 
 function defaultDB(){
-  "meta": {
-    "seriesTitle": "애니메이션 시리즈",
-    "episodeCount": 12
-  },
-  "departments": [
-    "스토리보드",
-    "애니메이팅",
-    "대본",
-    "배경",
-    "컨셉아트/캐릭터",
-    "프랍",
-    "편집",
-    "사운드"
-  ],
-  "members": [
-    {
-      "id": "m1",
-      "name": "강서연",
-      "dept": "전체",
-      "color": "#f2b84b"
-    },
-    {
-      "id": "m2",
-      "name": "유연재",
-      "dept": "전체",
-      "color": "#4fd1c5"
-    },
-    {
-      "id": "m3",
-      "name": "임성호",
-      "dept": "대본",
-      "color": "#e2725b"
-    },
-    {
-      "id": "m4",
-      "name": "김민정",
-      "dept": "컨셉아트/캐릭터",
-      "color": "#8ab4f8"
-    },
-    {
-      "id": "m5",
-      "name": "김유진",
-      "dept": "편집",
-      "color": "#c792ea"
-    },
-    {
-      "id": "m_mrk8y5qwf3pyo",
-      "name": "이세은",
-      "dept": "애니메이팅",
-      "color": "#82d9a4"
-    }
-  ],
-  "episodes": [
-    {
-      "number": 1,
-      "title": "1화"
-    },
-    {
-      "number": 2,
-      "title": "2화"
-    },
-    {
-      "number": 3,
-      "title": "3화"
-    },
-    {
-      "number": 4,
-      "title": "4화"
-    },
-    {
-      "number": 5,
-      "title": "5화"
-    },
-    {
-      "number": 6,
-      "title": "6화"
-    },
-    {
-      "number": 7,
-      "title": "7화"
-    },
-    {
-      "number": 8,
-      "title": "8화"
-    },
-    {
-      "number": 9,
-      "title": "9화"
-    },
-    {
-      "number": 10,
-      "title": "10화"
-    },
-    {
-      "number": 11,
-      "title": "11화"
-    },
-    {
-      "number": 12,
-      "title": "12화"
-    }
-  ],
-  "tasks": [
-    {
-      "id": "t_mrk8oh0fju027",
-      "episodeNumber": 1,
-      "dept": "스토리보드",
-      "name": "콘티 초안 작성",
-      "status": "완료",
-      "assigneeId": "m1",
-      "startDate": "2026-06-24",
-      "endDate": "2026-06-28",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0f557ol",
-      "episodeNumber": 1,
-      "dept": "스토리보드",
-      "name": "콘티 수정 확정",
-      "status": "완료",
-      "assigneeId": "m1",
-      "startDate": "2026-06-29",
-      "endDate": "2026-07-02",
-      "notes": "",
-      "order": 1
-    },
-    {
-      "id": "t_mrk8oh0fur55a",
-      "episodeNumber": 1,
-      "dept": "애니메이팅",
-      "name": "캐릭터 키프레임",
-      "status": "완료",
-      "assigneeId": "m2",
-      "startDate": "2026-07-03",
-      "endDate": "2026-07-08",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fb72yu",
-      "episodeNumber": 1,
-      "dept": "애니메이팅",
-      "name": "액션 원화",
-      "status": "완료",
-      "assigneeId": "m2",
-      "startDate": "2026-07-08",
-      "endDate": "2026-07-12",
-      "notes": "",
-      "order": 1
-    },
-    {
-      "id": "t_mrk8oh0fady8k",
-      "episodeNumber": 1,
-      "dept": "배경",
-      "name": "배경 컨셉 확정",
-      "status": "완료",
-      "assigneeId": "m3",
-      "startDate": "2026-07-03",
-      "endDate": "2026-07-06",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fa2o0w",
-      "episodeNumber": 1,
-      "dept": "배경",
-      "name": "배경 원화 작업",
-      "status": "진행중",
-      "assigneeId": "m3",
-      "startDate": "2026-07-12",
-      "endDate": "2026-07-17",
-      "notes": "",
-      "order": 1
-    },
-    {
-      "id": "t_mrk8oh0frfkd4",
-      "episodeNumber": 1,
-      "dept": "컨셉아트/캐릭터",
-      "name": "캐릭터 채색",
-      "status": "대기",
-      "assigneeId": "m2",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0f522yx",
-      "episodeNumber": 1,
-      "dept": "프랍",
-      "name": "합성 1차",
-      "status": "대기",
-      "assigneeId": "m4",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0f9t9hu",
-      "episodeNumber": 1,
-      "dept": "편집",
-      "name": "가편집",
-      "status": "대기",
-      "assigneeId": "m1",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fpz7bz",
-      "episodeNumber": 1,
-      "dept": "사운드",
-      "name": "임시 사운드",
-      "status": "대기",
-      "assigneeId": "m5",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fkmfb1",
-      "episodeNumber": 2,
-      "dept": "스토리보드",
-      "name": "콘티 초안 작성",
-      "status": "완료",
-      "assigneeId": "m1",
-      "startDate": "2026-07-04",
-      "endDate": "2026-07-08",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fpqyj4",
-      "episodeNumber": 2,
-      "dept": "애니메이팅",
-      "name": "캐릭터 키프레임",
-      "status": "진행중",
-      "assigneeId": "m2",
-      "startDate": "2026-07-10",
-      "endDate": "2026-07-16",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fx50px",
-      "episodeNumber": 2,
-      "dept": "배경",
-      "name": "배경 컨셉 확정",
-      "status": "진행중",
-      "assigneeId": "m3",
-      "startDate": "2026-07-11",
-      "endDate": "2026-07-18",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fbwexn",
-      "episodeNumber": 2,
-      "dept": "컨셉아트/캐릭터",
-      "name": "캐릭터 채색",
-      "status": "대기",
-      "assigneeId": "m2",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0f58xfr",
-      "episodeNumber": 2,
-      "dept": "프랍",
-      "name": "합성 1차",
-      "status": "대기",
-      "assigneeId": "m4",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fxl0sn",
-      "episodeNumber": 3,
-      "dept": "스토리보드",
-      "name": "콘티 초안 작성",
-      "status": "진행중",
-      "assigneeId": "m1",
-      "startDate": "2026-07-12",
-      "endDate": "2026-07-19",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fupyei",
-      "episodeNumber": 3,
-      "dept": "애니메이팅",
-      "name": "캐릭터 키프레임",
-      "status": "보류",
-      "assigneeId": "m2",
-      "startDate": "2026-07-13",
-      "endDate": "2026-07-20",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fxrbch",
-      "episodeNumber": 3,
-      "dept": "배경",
-      "name": "로케이션 헌팅",
-      "status": "대기",
-      "assigneeId": "m3",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0flflva",
-      "episodeNumber": 4,
-      "dept": "스토리보드",
-      "name": "콘티 초안 작성",
-      "status": "대기",
-      "assigneeId": "m1",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fu7t3o",
-      "episodeNumber": 5,
-      "dept": "스토리보드",
-      "name": "콘티 초안 작성",
-      "status": "대기",
-      "assigneeId": "m1",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fft02k",
-      "episodeNumber": 6,
-      "dept": "스토리보드",
-      "name": "콘티 초안 작성",
-      "status": "대기",
-      "assigneeId": "m1",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fje67u",
-      "episodeNumber": 7,
-      "dept": "스토리보드",
-      "name": "콘티 초안 작성",
-      "status": "대기",
-      "assigneeId": "m1",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0frcd0g",
-      "episodeNumber": 8,
-      "dept": "스토리보드",
-      "name": "콘티 초안 작성",
-      "status": "대기",
-      "assigneeId": "m1",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fpwhgl",
-      "episodeNumber": 9,
-      "dept": "스토리보드",
-      "name": "콘티 초안 작성",
-      "status": "대기",
-      "assigneeId": "m1",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fkel48",
-      "episodeNumber": 10,
-      "dept": "스토리보드",
-      "name": "콘티 초안 작성",
-      "status": "대기",
-      "assigneeId": "m1",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0ft6fvx",
-      "episodeNumber": 11,
-      "dept": "스토리보드",
-      "name": "콘티 초안 작성",
-      "status": "대기",
-      "assigneeId": "m1",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    },
-    {
-      "id": "t_mrk8oh0fc7gna",
-      "episodeNumber": 12,
-      "dept": "스토리보드",
-      "name": "콘티 초안 작성",
-      "status": "대기",
-      "assigneeId": "m1",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0
-    }
-  ],
-  "media": [
-    {
-      "id": "md_mrk8oh0foxizw",
-      "title": "1화 최종 컷 (v3)",
-      "type": "완성영상",
-      "episodeNumber": 1,
-      "url": "https://drive.google.com",
-      "thumbnail": "",
-      "version": "v3",
-      "date": "2026-07-13",
-      "desc": "1화 최종 렌더 버전"
-    },
-    {
-      "id": "md_mrk8oh0fwtsvx",
-      "title": "주인공 컨셉아트",
-      "type": "컨셉아트",
-      "episodeNumber": null,
-      "url": "https://drive.google.com",
-      "thumbnail": "",
-      "version": "v1",
-      "date": "2026-06-14",
-      "desc": "메인 캐릭터 3뷰 설정"
-    },
-    {
-      "id": "md_mrk8oh0fiyka2",
-      "title": "2화 배경 컨셉 세트",
-      "type": "컨셉아트",
-      "episodeNumber": 2,
-      "url": "https://drive.google.com",
-      "thumbnail": "",
-      "version": "v2",
-      "date": "2026-07-09",
-      "desc": "학교 배경 컨셉 5종"
-    }
-  ]
+  const depts = ['스토리보드','원화','동화','배경','채색','합성','편집','사운드'];
+  const members = [
+    {id:'m1', name:'김진행', dept:'전체', color:PALETTE[0]},
+    {id:'m2', name:'이작화', dept:'원화', color:PALETTE[1]},
+    {id:'m3', name:'박배경', dept:'배경', color:PALETTE[2]},
+    {id:'m4', name:'최합성', dept:'합성', color:PALETTE[3]},
+    {id:'m5', name:'정사운드', dept:'사운드', color:PALETTE[4]},
+  ];
+  const episodes = [];
+  for(let i=1;i<=12;i++) episodes.push({number:i, title:i+'화'});
+
+  const today = new Date();
+  const iso = (d)=> d.toISOString().slice(0,10);
+  const addDays=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x;};
+
+  const tasks = [];
+  function addTask(ep,dept,name,status,assigneeId,startOffset,endOffset,order){
+    tasks.push({
+      id:uid('t'), episodeNumber:ep, dept, name, status, assigneeId,
+      startDate: startOffset!=null? iso(addDays(today,startOffset)): '',
+      endDate: endOffset!=null? iso(addDays(today,endOffset)): '',
+      notes:'', order: order||0
+    });
+  }
+  // Episode 1 — nearly done
+  addTask(1,'스토리보드','콘티 초안 작성','완료','m1',-20,-16,0);
+  addTask(1,'스토리보드','콘티 수정 확정','완료','m1',-15,-12,1);
+  addTask(1,'원화','캐릭터 키프레임','완료','m2',-11,-6,0);
+  addTask(1,'원화','액션 원화','완료','m2',-6,-2,1);
+  addTask(1,'배경','배경 컨셉 확정','완료','m3',-11,-8,0);
+  addTask(1,'배경','배경 원화 작업','진행중','m3',-2,3,1);
+  addTask(1,'채색','캐릭터 채색','대기','m2',null,null,0);
+  addTask(1,'합성','합성 1차','대기','m4',null,null,0);
+  addTask(1,'편집','가편집','대기','m1',null,null,0);
+  addTask(1,'사운드','임시 사운드','대기','m5',null,null,0);
+  // Episode 2 — mid progress
+  addTask(2,'스토리보드','콘티 초안 작성','완료','m1',-10,-6,0);
+  addTask(2,'원화','캐릭터 키프레임','진행중','m2',-4,2,0);
+  addTask(2,'배경','배경 컨셉 확정','진행중','m3',-3,4,0);
+  addTask(2,'채색','캐릭터 채색','대기','m2',null,null,0);
+  addTask(2,'합성','합성 1차','대기','m4',null,null,0);
+  // Episode 3 — early / one hold
+  addTask(3,'스토리보드','콘티 초안 작성','진행중','m1',-2,5,0);
+  addTask(3,'원화','캐릭터 키프레임','보류','m2',-1,6,0);
+  addTask(3,'배경','로케이션 헌팅','대기','m3',null,null,0);
+  // Episode 4-12 — only storyboard queued
+  for(let e=4;e<=12;e++){
+    addTask(e,'스토리보드','콘티 초안 작성','대기','m1',null,null,0);
+  }
+
+  const media = [
+    {id:uid('md'), title:'1화 최종 컷 (v3)', type:'완성영상', episodeNumber:1, url:'https://drive.google.com', thumbnail:'', version:'v3', date:iso(addDays(today,-1)), desc:'1화 최종 렌더 버전'},
+    {id:uid('md'), title:'주인공 컨셉아트', type:'컨셉아트', episodeNumber:null, url:'https://drive.google.com', thumbnail:'', version:'v1', date:iso(addDays(today,-30)), desc:'메인 캐릭터 3뷰 설정'},
+    {id:uid('md'), title:'2화 배경 컨셉 세트', type:'컨셉아트', episodeNumber:2, url:'https://drive.google.com', thumbnail:'', version:'v2', date:iso(addDays(today,-5)), desc:'학교 배경 컨셉 5종'},
+  ];
+
+  return {
+    meta:{ seriesTitle:'애니메이션 시리즈', episodeCount:12 },
+    departments: depts,
+    members, episodes, tasks, media
+  };
 }
 
 let DB = null;
