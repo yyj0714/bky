@@ -299,7 +299,7 @@ table.datatable tr:hover td{background:var(--bg-panel-2);}
 
 <script>
   // REELTRACK — 보안 및 검색 차트 연동용 비밀번호 시스템
-  const correctPassword = "1234"; // 사용자가 원할 때 이 부분을 수정해서 비밀번호를 바꿀 수 있습니다.
+  const correctPassword = "0714"; // 사용자가 원할 때 이 부분을 수정해서 비밀번호를 바꿀 수 있습니다.
   const userInput = prompt("REELTRACK — 프로젝트 접근 비밀번호를 입력하세요:");
 
   if (userInput === correctPassword) {
@@ -359,11 +359,43 @@ function uid(prefix){ return prefix + '_' + Date.now().toString(36) + Math.rando
 function defaultDB(){
   const depts = ['스토리보드','원화','동화','배경','채색','합성','편집','사운드'];
   const members = [
-    {id:'m1', name:'김진행', dept:'전체', color:PALETTE[0]},
-    {id:'m2', name:'이작화', dept:'원화', color:PALETTE[1]},
-    {id:'m3', name:'박배경', dept:'배경', color:PALETTE[2]},
-    {id:'m4', name:'최합성', dept:'합성', color:PALETTE[3]},
-    {id:'m5', name:'정사운드', dept:'사운드', color:PALETTE[4]},
+    {
+      "id": "m1",
+      "name": "강서연",
+      "dept": "전체",
+      "color": "#f2b84b"
+    },
+    {
+      "id": "m2",
+      "name": "유연재",
+      "dept": "전체",
+      "color": "#4fd1c5"
+    },
+    {
+      "id": "m3",
+      "name": "임성호",
+      "dept": "대본",
+      "color": "#e2725b"
+    },
+    {
+      "id": "m4",
+      "name": "김민정",
+      "dept": "컨셉아트/캐릭터",
+      "color": "#8ab4f8"
+    },
+    {
+      "id": "m5",
+      "name": "김유진",
+      "dept": "편집",
+      "color": "#c792ea"
+    },
+    {
+      "id": "m_mrk8y5qwf3pyo",
+      "name": "이세은",
+      "dept": "애니메이팅",
+      "color": "#82d9a4"
+    }
+,
   ];
   const episodes = [];
   for(let i=1;i<=12;i++) episodes.push({number:i, title:i+'화'});
@@ -412,7 +444,8 @@ function defaultDB(){
     {id:uid('md'), title:'주인공 컨셉아트', type:'컨셉아트', episodeNumber:null, url:'https://drive.google.com', thumbnail:'', version:'v1', date:iso(addDays(today,-30)), desc:'메인 캐릭터 3뷰 설정'},
     {id:uid('md'), title:'2화 배경 컨셉 세트', type:'컨셉아트', episodeNumber:2, url:'https://drive.google.com', thumbnail:'', version:'v2', date:iso(addDays(today,-5)), desc:'학교 배경 컨셉 5종'},
   ];
-
+  
+  
   return {
     meta:{ seriesTitle:'애니메이션 시리즈', episodeCount:12 },
     departments: depts,
