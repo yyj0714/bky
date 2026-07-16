@@ -301,7 +301,7 @@ table.datatable tr:hover td{background:var(--bg-panel-2);}
 
 <script>
   // REELTRACK — 보안 및 검색 차트 연동용 비밀번호 시스템
-  const correctPassword = "bkyani"; // 사용자가 원할 때 이 부분을 수정해서 비밀번호를 바꿀 수 있습니다.
+  const correctPassword = "1234"; // 사용자가 원할 때 이 부분을 수정해서 비밀번호를 바꿀 수 있습니다.
   const userInput = prompt("REELTRACK — 프로젝트 접근 비밀번호를 입력하세요:");
 
   if (userInput === correctPassword) {
@@ -5367,10 +5367,7 @@ const SEED_DATA =
       "desc": ""
     }
   ]
-}
-  
-
-;
+};
 /* ============================================================================
    📌 PD 데이터 업데이트 영역 (여기까지)
    ⚠ 이 아래 코드는 프로그램 동작 코드이니 수정하지 마세요.
@@ -5934,6 +5931,7 @@ function renderPipelineBoard(){
   const depts = DB.departments;
   if(!UI.selectMode) UI.selectMode = false;
   if(!UI.selectedTasks) UI.selectedTasks = new Set();
+  if(!UI.pipelineSortMode) UI.pipelineSortMode = 'deadline';
   const selCount = UI.selectedTasks.size;
   return `
     ${filmStrip(ep.number, 'setPipelineEpisode')}
@@ -5951,9 +5949,23 @@ function renderPipelineBoard(){
         `}
       </div>
     </div>
+    <div class="filter-bar" style="margin-top:-6px;">
+      <span class="faint mono" style="font-size:11px;">정렬</span>
+      <div class="chip ${UI.pipelineSortMode==='deadline'?'active':''}" onclick="setPipelineSortMode('deadline')">마감일 임박순</div>
+      <div class="chip ${UI.pipelineSortMode==='manual'?'active':''}" onclick="setPipelineSortMode('manual')">직접 정렬 (↑↓)</div>
+    </div>
     <div class="pipeline-board">
       ${depts.map(d=>{
-        const ts = DB.tasks.filter(t=>t.episodeNumber===ep.number && t.dept===d).sort((a,b)=>a.order-b.order);
+        let ts = DB.tasks.filter(t=>t.episodeNumber===ep.number && t.dept===d);
+        if(UI.pipelineSortMode==='deadline'){
+          ts = ts.slice().sort((a,b)=>{
+            const ad = a.endDate || '9999-99-99', bd = b.endDate || '9999-99-99';
+            if(ad!==bd) return ad.localeCompare(bd);
+            return a.order-b.order;
+          });
+        }else{
+          ts = ts.slice().sort((a,b)=>a.order-b.order);
+        }
         const done = ts.filter(t=>t.status==='완료').length;
         const pct = ts.length? Math.round(done/ts.length*100) : null;
         return `<div class="dept-col">
@@ -5967,6 +5979,12 @@ function renderPipelineBoard(){
                 </div>
                 <div class="trow">
                   <span class="pill clickable ${t.status}" onclick="event.stopPropagation(); ${UI.selectMode? `toggleTaskSelect('${t.id}')` : `cycleStatus('${t.id}')`}">${t.status}</span>
+                  ${(!UI.selectMode && UI.pipelineSortMode==='manual')? `
+                    <span style="display:flex;gap:3px;">
+                      <button class="btn small ghost" style="padding:1px 7px;" onclick="event.stopPropagation(); moveTask('${t.id}','up')">▲</button>
+                      <button class="btn small ghost" style="padding:1px 7px;" onclick="event.stopPropagation(); moveTask('${t.id}','down')">▼</button>
+                    </span>
+                  ` : ''}
                 </div>
                 <div class="trow" style="margin-top:6px;">${assigneesHtml(t.assigneeIds)}</div>
                 <div class="tdates">${fmtDate(t.startDate)} → ${fmtDate(t.endDate)}</div>
@@ -6007,6 +6025,20 @@ function cycleStatus(id){
   const t = DB.tasks.find(x=>x.id===id);
   const idx = STATUSES.indexOf(t.status);
   t.status = STATUSES[(idx+1)%STATUSES.length];
+  saveDB(); renderPage();
+}
+function setPipelineSortMode(mode){ UI.pipelineSortMode = mode; renderPage(); }
+function moveTask(id, direction){
+  const t = DB.tasks.find(x=>x.id===id);
+  if(!t) return;
+  const siblings = DB.tasks.filter(x=>x.episodeNumber===t.episodeNumber && x.dept===t.dept).sort((a,b)=>a.order-b.order);
+  siblings.forEach((s,i)=>{ s.order = i; });
+  const idx = siblings.findIndex(x=>x.id===id);
+  const swapIdx = direction==='up'? idx-1 : idx+1;
+  if(swapIdx<0 || swapIdx>=siblings.length) return;
+  const tmp = siblings[idx].order;
+  siblings[idx].order = siblings[swapIdx].order;
+  siblings[swapIdx].order = tmp;
   saveDB(); renderPage();
 }
 
@@ -6394,7 +6426,7 @@ function monthGridForRow(minDate,maxDate,pxPerDay){
    ============================================================ */
 function showModal(innerHtml, wide){
   document.getElementById('modal-root').innerHTML = `
-    <div class="modal-overlay" onclick="if(event.target===this) closeModal()">
+    <div class="modal-overlay">
       <div class="modal ${wide?'wide':''}">${innerHtml}</div>
     </div>`;
 }
