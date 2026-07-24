@@ -389,56 +389,69 @@ const SEED_DATA =
     "배경",
     "애니메이팅",
     "폴리싱",
-    "편집"
+    "편집",
+    "디자인"
   ],
   "members": [
     {
       "id": "m1",
-      "name": "ksy",
+      "name": "강서연",
       "dept": "전체",
       "color": "#f2b84b"
     },
     {
       "id": "m2",
-      "name": "yyj",
-      "dept": "전체",
+      "name": "유연재",
+      "dept": "배경",
       "color": "#4fd1c5"
     },
     {
       "id": "m3",
-      "name": "lsh",
+      "name": "임성호",
       "dept": "대본",
       "color": "#e2725b"
     },
     {
       "id": "m4",
-      "name": "kmj",
+      "name": "김민정",
       "dept": "컨셉아트/캐디",
       "color": "#8ab4f8"
     },
     {
       "id": "m5",
-      "name": "lse",
+      "name": "이세은",
       "dept": "애니메이팅",
       "color": "#c792ea"
     },
     {
       "id": "m_mrlei5bbd6arf",
-      "name": "kyj",
+      "name": "김유진",
       "dept": "편집",
       "color": "#82d9a4"
     },
     {
       "id": "m_mrllxye5zmlcu",
-      "name": "ksa",
+      "name": "김솔아",
       "dept": "스토리보드",
       "color": "#f49ac2"
     },
     {
       "id": "m_mrlly926o0xye",
-      "name": "meb",
+      "name": "문은비",
       "dept": "애니메이팅",
       "color": "#e8b46a"
+    },
+    {
+      "id": "m_mrykfhktbcwfl",
+      "name": "강현지",
+      "dept": "디자인",
+      "color": "#7fd1ff"
+    },
+    {
+      "id": "m_mrykfyfwzte0q",
+      "name": "한수정",
+      "dept": "디자인",
+      "color": "#d3d97e"
     }
   ],
   "episodes": [
@@ -731,18 +744,6 @@ const SEED_DATA =
       ]
     },
     {
-      "id": "t_mrm0czd5nhfyu",
-      "episodeNumber": 2,
-      "dept": "사운드/더빙",
-      "name": "2화 주연성우 더빙(강해나)",
-      "status": "완료",
-      "startDate": "",
-      "endDate": "",
-      "notes": "",
-      "order": 0,
-      "assigneeIds": []
-    },
-    {
       "id": "t_mrm0dcikyvxl3",
       "episodeNumber": 2,
       "dept": "사운드/더빙",
@@ -752,7 +753,10 @@ const SEED_DATA =
       "endDate": "",
       "notes": "",
       "order": 1,
-      "assigneeIds": []
+      "assigneeIds": [
+        "m1",
+        "m3"
+      ]
     },
     {
       "id": "t_mrm0js5bg8nxi",
@@ -792,7 +796,9 @@ const SEED_DATA =
       "endDate": "",
       "notes": "",
       "order": 0,
-      "assigneeIds": []
+      "assigneeIds": [
+        "m_mrykfhktbcwfl"
+      ]
     },
     {
       "id": "t_mrm0svuk3j9ow",
@@ -832,7 +838,10 @@ const SEED_DATA =
       "endDate": "",
       "notes": "",
       "order": 0,
-      "assigneeIds": []
+      "assigneeIds": [
+        "m1",
+        "m3"
+      ]
     },
     {
       "id": "t_mrm0v9b7jb9tl",
@@ -846,20 +855,6 @@ const SEED_DATA =
       "order": 4,
       "assigneeIds": [
         "m1"
-      ]
-    },
-    {
-      "id": "t_mrm0xjnrby8g4",
-      "episodeNumber": 4,
-      "dept": "스토리보드",
-      "name": "스토리보드릴 제작",
-      "status": "완료",
-      "startDate": "2026-06-19",
-      "endDate": "2026-06-26",
-      "notes": "",
-      "order": 1,
-      "assigneeIds": [
-        "m_mrllxye5zmlcu"
       ]
     },
     {
@@ -1011,8 +1006,8 @@ const SEED_DATA =
       "assigneeIds": [
         "m_mrllxye5zmlcu"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-06-26",
+      "endDate": "2026-06-29",
       "notes": "",
       "order": 0
     },
@@ -1035,12 +1030,12 @@ const SEED_DATA =
       "episodeNumber": 7,
       "dept": "스토리보드",
       "name": "썸네일 스케치 1차",
-      "status": "대기",
+      "status": "진행중",
       "assigneeIds": [
         "m_mrllxye5zmlcu"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-07-24",
+      "endDate": "2026-07-28",
       "notes": "",
       "order": 0
     },
@@ -1119,7 +1114,7 @@ const SEED_DATA =
       "episodeNumber": 4,
       "dept": "스토리보드",
       "name": "스토리보드릴 1차",
-      "status": "대기",
+      "status": "완료",
       "assigneeIds": [
         "m_mrllxye5zmlcu"
       ],
@@ -1133,12 +1128,12 @@ const SEED_DATA =
       "episodeNumber": 5,
       "dept": "스토리보드",
       "name": "스토리보드릴 1차",
-      "status": "대기",
+      "status": "완료",
       "assigneeIds": [
         "m_mrllxye5zmlcu"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-07-03",
+      "endDate": "2026-07-08",
       "notes": "",
       "order": 1
     },
@@ -1147,7 +1142,7 @@ const SEED_DATA =
       "episodeNumber": 6,
       "dept": "스토리보드",
       "name": "스토리보드릴 1차",
-      "status": "대기",
+      "status": "완료",
       "assigneeIds": [
         "m_mrllxye5zmlcu"
       ],
@@ -1165,8 +1160,8 @@ const SEED_DATA =
       "assigneeIds": [
         "m_mrllxye5zmlcu"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-05",
       "notes": "",
       "order": 1
     },
@@ -2201,8 +2196,8 @@ const SEED_DATA =
         "m2",
         "m5"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-08-06",
+      "endDate": "2026-08-06",
       "notes": "",
       "order": 0
     },
@@ -2346,7 +2341,7 @@ const SEED_DATA =
       "episodeNumber": 4,
       "dept": "배경",
       "name": "2차 렌더링 / 리터칭",
-      "status": "대기",
+      "status": "진행중",
       "assigneeIds": [
         "m2",
         "m5"
@@ -2611,8 +2606,8 @@ const SEED_DATA =
       "assigneeIds": [
         "m4"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-08-03",
+      "endDate": "2026-08-07",
       "notes": "",
       "order": 0
     },
@@ -2691,9 +2686,11 @@ const SEED_DATA =
       "episodeNumber": 4,
       "dept": "컨셉아트/캐디",
       "name": "컨셉아트 B",
-      "status": "대기",
+      "status": "완료",
       "assigneeIds": [
-        "m4"
+        "m1",
+        "m4",
+        "m_mrlei5bbd6arf"
       ],
       "startDate": "",
       "endDate": "",
@@ -3176,8 +3173,8 @@ const SEED_DATA =
         "m1",
         "m3"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-07-14",
+      "endDate": "2026-07-14",
       "notes": "",
       "order": 0
     },
@@ -3191,8 +3188,8 @@ const SEED_DATA =
         "m1",
         "m3"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-07-29",
+      "endDate": "2026-07-29",
       "notes": "",
       "order": 0
     },
@@ -3333,7 +3330,7 @@ const SEED_DATA =
       "episodeNumber": 4,
       "dept": "사운드/더빙",
       "name": "사운드 1차 편집",
-      "status": "대기",
+      "status": "완료",
       "assigneeIds": [
         "m1"
       ],
@@ -3347,12 +3344,12 @@ const SEED_DATA =
       "episodeNumber": 5,
       "dept": "사운드/더빙",
       "name": "사운드 1차 편집",
-      "status": "대기",
+      "status": "완료",
       "assigneeIds": [
         "m1"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-07-22",
+      "endDate": "2026-07-22",
       "notes": "",
       "order": 1
     },
@@ -3365,8 +3362,8 @@ const SEED_DATA =
       "assigneeIds": [
         "m1"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-07-30",
+      "endDate": "2026-07-30",
       "notes": "",
       "order": 1
     },
@@ -3529,8 +3526,8 @@ const SEED_DATA =
         "m2",
         "m3"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-07-01",
+      "endDate": "2026-07-01",
       "notes": "",
       "order": 2
     },
@@ -3545,8 +3542,8 @@ const SEED_DATA =
         "m2",
         "m3"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-07-14",
+      "endDate": "2026-07-14",
       "notes": "",
       "order": 2
     },
@@ -3555,14 +3552,14 @@ const SEED_DATA =
       "episodeNumber": 7,
       "dept": "사운드/더빙",
       "name": "가녹음",
-      "status": "완료",
+      "status": "대기",
       "assigneeIds": [
         "m1",
         "m2",
         "m3"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-07-29",
+      "endDate": "2026-07-29",
       "notes": "",
       "order": 2
     },
@@ -3879,8 +3876,8 @@ const SEED_DATA =
       "assigneeIds": [
         "m_mrllxye5zmlcu"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-06-29",
+      "endDate": "2026-07-03",
       "notes": "",
       "order": 2
     },
@@ -3889,7 +3886,7 @@ const SEED_DATA =
       "episodeNumber": 6,
       "dept": "스토리보드",
       "name": "썸네일 스케치 2차",
-      "status": "대기",
+      "status": "완료",
       "assigneeIds": [
         "m_mrllxye5zmlcu"
       ],
@@ -3907,8 +3904,8 @@ const SEED_DATA =
       "assigneeIds": [
         "m_mrllxye5zmlcu"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-07-28",
+      "endDate": "2026-07-31",
       "notes": "",
       "order": 2
     },
@@ -4047,8 +4044,8 @@ const SEED_DATA =
       "assigneeIds": [
         "m_mrllxye5zmlcu"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-07-08",
+      "endDate": "2026-07-11",
       "notes": "",
       "order": 3
     },
@@ -4057,7 +4054,7 @@ const SEED_DATA =
       "episodeNumber": 6,
       "dept": "스토리보드",
       "name": "스토리보드릴 2차",
-      "status": "대기",
+      "status": "진행중",
       "assigneeIds": [
         "m_mrllxye5zmlcu"
       ],
@@ -4075,8 +4072,8 @@ const SEED_DATA =
       "assigneeIds": [
         "m_mrllxye5zmlcu"
       ],
-      "startDate": "",
-      "endDate": "",
+      "startDate": "2026-08-05",
+      "endDate": "2026-08-07",
       "notes": "",
       "order": 3
     },
@@ -4351,7 +4348,7 @@ const SEED_DATA =
       "episodeNumber": 3,
       "dept": "애니메이팅",
       "name": "원화 A파트 리테이크",
-      "status": "진행중",
+      "status": "완료",
       "assigneeIds": [
         "m5"
       ],
@@ -4547,7 +4544,7 @@ const SEED_DATA =
       "episodeNumber": 5,
       "dept": "애니메이팅",
       "name": "원화 B파트 1차",
-      "status": "대기",
+      "status": "진행중",
       "assigneeIds": [
         "m_mrlly926o0xye"
       ],
@@ -4855,7 +4852,7 @@ const SEED_DATA =
       "episodeNumber": 3,
       "dept": "애니메이팅",
       "name": "동화 A파트 1차",
-      "status": "대기",
+      "status": "진행중",
       "assigneeIds": [
         "m5"
       ],
@@ -5023,7 +5020,7 @@ const SEED_DATA =
       "episodeNumber": 3,
       "dept": "애니메이팅",
       "name": "동화 A파트 리테이크",
-      "status": "대기",
+      "status": "진행중",
       "assigneeIds": [
         "m5"
       ],
@@ -5165,7 +5162,7 @@ const SEED_DATA =
       "name": "원화 작감",
       "status": "완료",
       "assigneeIds": [
-        "m_mrlei5bbd6arf"
+        "m4"
       ],
       "startDate": "",
       "endDate": "",
@@ -5179,7 +5176,7 @@ const SEED_DATA =
       "name": "원화 작감",
       "status": "대기",
       "assigneeIds": [
-        "m_mrlei5bbd6arf"
+        "m4"
       ],
       "startDate": "",
       "endDate": "",
@@ -5193,7 +5190,7 @@ const SEED_DATA =
       "name": "원화 작감",
       "status": "대기",
       "assigneeIds": [
-        "m_mrlei5bbd6arf"
+        "m4"
       ],
       "startDate": "",
       "endDate": "",
@@ -5207,7 +5204,7 @@ const SEED_DATA =
       "name": "원화 작감",
       "status": "대기",
       "assigneeIds": [
-        "m_mrlei5bbd6arf"
+        "m4"
       ],
       "startDate": "",
       "endDate": "",
@@ -5221,7 +5218,7 @@ const SEED_DATA =
       "name": "원화 작감",
       "status": "대기",
       "assigneeIds": [
-        "m_mrlei5bbd6arf"
+        "m4"
       ],
       "startDate": "",
       "endDate": "",
@@ -5235,7 +5232,7 @@ const SEED_DATA =
       "name": "원화 작감",
       "status": "대기",
       "assigneeIds": [
-        "m_mrlei5bbd6arf"
+        "m4"
       ],
       "startDate": "",
       "endDate": "",
@@ -5249,7 +5246,7 @@ const SEED_DATA =
       "name": "원화 작감",
       "status": "대기",
       "assigneeIds": [
-        "m_mrlei5bbd6arf"
+        "m4"
       ],
       "startDate": "",
       "endDate": "",
@@ -5263,7 +5260,7 @@ const SEED_DATA =
       "name": "원화 작감",
       "status": "대기",
       "assigneeIds": [
-        "m_mrlei5bbd6arf"
+        "m4"
       ],
       "startDate": "",
       "endDate": "",
@@ -5277,7 +5274,7 @@ const SEED_DATA =
       "name": "원화 작감",
       "status": "대기",
       "assigneeIds": [
-        "m_mrlei5bbd6arf"
+        "m4"
       ],
       "startDate": "",
       "endDate": "",
@@ -5291,12 +5288,279 @@ const SEED_DATA =
       "name": "원화 작감",
       "status": "대기",
       "assigneeIds": [
-        "m_mrlei5bbd6arf"
+        "m4"
       ],
       "startDate": "",
       "endDate": "",
       "notes": "",
       "order": 6
+    },
+    {
+      "id": "t_mryksv0r6r490",
+      "episodeNumber": 4,
+      "dept": "스토리보드",
+      "name": "컷시트 제작",
+      "status": "대기",
+      "assigneeIds": [
+        "m3"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 4
+    },
+    {
+      "id": "t_mryksv0r2xauo",
+      "episodeNumber": 5,
+      "dept": "스토리보드",
+      "name": "컷시트 제작",
+      "status": "완료",
+      "assigneeIds": [
+        "m3"
+      ],
+      "startDate": "2026-07-15",
+      "endDate": "2026-07-15",
+      "notes": "",
+      "order": 4
+    },
+    {
+      "id": "t_mryksv0r7wxx1",
+      "episodeNumber": 6,
+      "dept": "스토리보드",
+      "name": "컷시트 제작",
+      "status": "대기",
+      "assigneeIds": [
+        "m3"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 4
+    },
+    {
+      "id": "t_mryksv0rvkug0",
+      "episodeNumber": 7,
+      "dept": "스토리보드",
+      "name": "컷시트 제작",
+      "status": "대기",
+      "assigneeIds": [
+        "m3"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 4
+    },
+    {
+      "id": "t_mryksv0rah8fl",
+      "episodeNumber": 8,
+      "dept": "스토리보드",
+      "name": "컷시트 제작",
+      "status": "대기",
+      "assigneeIds": [
+        "m3"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 4
+    },
+    {
+      "id": "t_mryksv0rmstcd",
+      "episodeNumber": 9,
+      "dept": "스토리보드",
+      "name": "컷시트 제작",
+      "status": "대기",
+      "assigneeIds": [
+        "m3"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 4
+    },
+    {
+      "id": "t_mryksv0r75c98",
+      "episodeNumber": 10,
+      "dept": "스토리보드",
+      "name": "컷시트 제작",
+      "status": "대기",
+      "assigneeIds": [
+        "m3"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 4
+    },
+    {
+      "id": "t_mryksv0re17hq",
+      "episodeNumber": 11,
+      "dept": "스토리보드",
+      "name": "컷시트 제작",
+      "status": "대기",
+      "assigneeIds": [
+        "m3"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 4
+    },
+    {
+      "id": "t_mryksv0rcobgj",
+      "episodeNumber": 12,
+      "dept": "스토리보드",
+      "name": "컷시트 제작",
+      "status": "대기",
+      "assigneeIds": [
+        "m3"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 4
+    },
+    {
+      "id": "t_mryktny92mlif",
+      "episodeNumber": 4,
+      "dept": "스토리보드",
+      "name": "컷별 스보릴 분할 및 분배",
+      "status": "대기",
+      "assigneeIds": [
+        "m2"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 5
+    },
+    {
+      "id": "t_mryktny98t5ym",
+      "episodeNumber": 5,
+      "dept": "스토리보드",
+      "name": "컷별 스보릴 분할 및 분배",
+      "status": "완료",
+      "assigneeIds": [
+        "m2"
+      ],
+      "startDate": "2026-07-23",
+      "endDate": "2026-07-23",
+      "notes": "",
+      "order": 5
+    },
+    {
+      "id": "t_mryktny9ue5nw",
+      "episodeNumber": 6,
+      "dept": "스토리보드",
+      "name": "컷별 스보릴 분할 및 분배",
+      "status": "대기",
+      "assigneeIds": [
+        "m2"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 5
+    },
+    {
+      "id": "t_mryktny9n6lax",
+      "episodeNumber": 7,
+      "dept": "스토리보드",
+      "name": "컷별 스보릴 분할 및 분배",
+      "status": "대기",
+      "assigneeIds": [
+        "m2"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 5
+    },
+    {
+      "id": "t_mryktny9i7qvj",
+      "episodeNumber": 8,
+      "dept": "스토리보드",
+      "name": "컷별 스보릴 분할 및 분배",
+      "status": "대기",
+      "assigneeIds": [
+        "m2"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 5
+    },
+    {
+      "id": "t_mryktny9x1kb5",
+      "episodeNumber": 9,
+      "dept": "스토리보드",
+      "name": "컷별 스보릴 분할 및 분배",
+      "status": "대기",
+      "assigneeIds": [
+        "m2"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 5
+    },
+    {
+      "id": "t_mryktny9bh3nc",
+      "episodeNumber": 10,
+      "dept": "스토리보드",
+      "name": "컷별 스보릴 분할 및 분배",
+      "status": "대기",
+      "assigneeIds": [
+        "m2"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 5
+    },
+    {
+      "id": "t_mryktny9lhdx1",
+      "episodeNumber": 11,
+      "dept": "스토리보드",
+      "name": "컷별 스보릴 분할 및 분배",
+      "status": "대기",
+      "assigneeIds": [
+        "m2"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 5
+    },
+    {
+      "id": "t_mryktny9r6cvy",
+      "episodeNumber": 12,
+      "dept": "스토리보드",
+      "name": "컷별 스보릴 분할 및 분배",
+      "status": "대기",
+      "assigneeIds": [
+        "m2"
+      ],
+      "startDate": "",
+      "endDate": "",
+      "notes": "",
+      "order": 5
+    },
+    {
+      "id": "t_mrymc8z1v7z50",
+      "episodeNumber": 10,
+      "dept": "컨셉아트/캐디",
+      "name": "완두콩 야채인간 캐릭터 디자인",
+      "assigneeIds": [
+        "m4",
+        "m_mrykfhktbcwfl"
+      ],
+      "status": "대기",
+      "startDate": "2026-08-03",
+      "endDate": "2026-08-07",
+      "notes": "",
+      "order": 2
     }
   ],
   "media": [
