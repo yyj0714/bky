@@ -6955,10 +6955,14 @@ function drawGantt(){
   const container = document.getElementById('gantt-container');
   if(!container) return;
   const statusColors = {'대기':'#5c6370','진행중':'#f2b84b','완료':'#4fd1c5','보류':'#e2725b'};
+  const deptColors = {};
+  DB.departments.forEach((d,i)=>{ deptColors[d] = PALETTE[i%PALETTE.length]; });
+
   let tasks = DB.tasks.filter(t=> t.startDate && t.endDate && UI.planningDepts.has(t.dept) && UI.planningEpisodes.has(t.episodeNumber));
-  tasks = tasks.sort((a,b)=> a.episodeNumber-b.episodeNumber || DB.departments.indexOf(a.dept)-DB.departments.indexOf(b.dept));
 
   const skippedCount = DB.tasks.filter(t=> (!t.startDate || !t.endDate) && UI.planningDepts.has(t.dept) && UI.planningEpisodes.has(t.episodeNumber)).length;
+
+  const visibleEpisodes = DB.episodes.filter(e=>UI.planningEpisodes.has(e.number));
 
   if(tasks.length===0){
     container.innerHTML = `<div class="card"><div class="empty-state">표시할 일정이 없습니다. 회차 메뉴에서 시작일/완료일을 등록하세요.${skippedCount? `<br>(날짜 미설정 ${skippedCount}건은 표시되지 않음)`:''}</div></div>`;
@@ -6968,18 +6972,16 @@ function drawGantt(){
   const allDates = tasks.flatMap(t=>[t.startDate, t.endDate]);
   let minDate = new Date(allDates.reduce((a,b)=> a<b?a:b));
   let maxDate = new Date(allDates.reduce((a,b)=> a>b?a:b));
-  minDate.setDate(minDate.getDate()-3);
-  maxDate.setDate(maxDate.getDate()+4);
+  minDate.setDate(minDate.getDate()-2);
+  maxDate.setDate(maxDate.getDate()+3);
   const totalDays = Math.max(1, Math.round((maxDate-minDate)/(1000*60*60*24)));
-  const pxPerDay = 26;
+  const pxPerDay = 16;
   const timelineWidth = totalDays*pxPerDay;
 
   function dayOffset(dateStr){ return Math.round((new Date(dateStr)-minDate)/(1000*60*60*24)); }
 
-  // month markers
+  // month markers (computed once, shared across all rows via a background overlay)
   let monthMarkers = '';
-  let cursor = new Date(minDate);
-  cursor.setDate(1); if(cursor<minDate) {} // start of month before or at minDate
   let d = new Date(minDate.getFullYear(), minDate.getMonth(), 1);
   while(d<=maxDate){
     const offset = Math.round((d-minDate)/(1000*60*60*24));
@@ -6990,25 +6992,53 @@ function drawGantt(){
   }
   const todayOffset = dayOffset(todayISO());
   const todayLine = (todayOffset>=0 && todayOffset<=totalDays) ? `<div class="gantt-today" style="left:${todayOffset*pxPerDay}px;"></div>` : '';
+  const bgGrid = monthMarkers.replace(/<div class="gantt-month"[^>]*>.*?<\/div>/g,'') + todayLine; // gridlines only, no month text repeated per row
 
+  const LANE_H = 15, LANE_GAP = 3, ROW_PAD = 6;
+
+  // group tasks by EPISODE (fixed 1→12 order, all episodes always shown so cross-episode overlap is visible);
+  // within each episode row, pack tasks into non-overlapping lanes sorted by date. Bar color = department (process),
+  // so overlapping colored bars across episode rows at the same x-position visually show "parallel production".
   let rows = '';
-  tasks.forEach(t=>{
-    const start = dayOffset(t.startDate);
-    const dur = Math.max(1, daysBetween(t.startDate, t.endDate)+1);
+  let totalTaskCount = 0;
+  visibleEpisodes.forEach(ep=>{
+    const epTasks = tasks.filter(t=>t.episodeNumber===ep.number)
+      .map(t=>({...t, _s:dayOffset(t.startDate), _e:dayOffset(t.endDate)}))
+      .sort((a,b)=> a._s-b._s || a._e-b._e);
+    totalTaskCount += epTasks.length;
+
+    const laneEnds = [];
+    const placed = epTasks.map(t=>{
+      let lane = laneEnds.findIndex(end=> t._s > end);
+      if(lane===-1){ lane = laneEnds.length; laneEnds.push(t._e); }
+      else{ laneEnds[lane] = t._e; }
+      return {...t, lane};
+    });
+    const laneCount = Math.max(1, laneEnds.length);
+    const rowHeight = laneCount*LANE_H + (laneCount-1)*LANE_GAP + ROW_PAD*2;
+
+    const bars = placed.map(t=>{
+      const left = t._s*pxPerDay;
+      const width = Math.max(pxPerDay*0.6, (t._e-t._s+1)*pxPerDay-2);
+      const top = ROW_PAD + t.lane*(LANE_H+LANE_GAP);
+      return `<div class="gantt-bar" title="${escapeHtml(ep.number+'화 · '+t.dept+' · '+t.name)} (${t.status}, ${t.startDate} ~ ${t.endDate})" style="left:${left}px;width:${width}px;top:${top}px;height:${LANE_H}px;background:${deptColors[t.dept]||'#5c6370'};opacity:${t.status==='완료'?0.45:1};" onclick="openTaskModal('${t.id}')"></div>`;
+    }).join('');
+
     rows += `<div class="gantt-row">
-      <div class="gantt-label"><div class="ep">${t.episodeNumber}화 · ${escapeHtml(t.dept)}</div><div class="dt">${escapeHtml(t.name)}</div></div>
-      <div class="gantt-timeline" style="width:${timelineWidth}px;">
-        ${monthGridForRow(minDate,maxDate,pxPerDay)}
-        <div class="gantt-bar" title="${escapeHtml(t.name)} (${t.startDate} ~ ${t.endDate})" style="left:${start*pxPerDay}px;width:${dur*pxPerDay-4}px;background:${statusColors[t.status]};" onclick="openTaskModal('${t.id}')">${t.name}</div>
-      </div>
+      <div class="gantt-label" style="height:${rowHeight}px;"><div class="dt">${ep.number}화</div><div class="ep">${epTasks.length}건</div></div>
+      <div class="gantt-timeline" style="width:${timelineWidth}px;height:${rowHeight}px;">${bgGrid}${bars}</div>
     </div>`;
   });
 
   container.innerHTML = `
     <div class="gantt-wrap">
+      <div class="gantt-legend">
+        ${DB.departments.filter(dd=>UI.planningDepts.has(dd)).map(dd=>`<div class="litem"><span class="lswatch" style="background:${deptColors[dd]}"></span>${escapeHtml(dd)}</div>`).join('')}
+        <div class="litem" style="margin-left:auto;">회차(1~12화)별 · 날짜순 정렬 · 옅은 색=완료 · 막대 클릭 시 상세 편집</div>
+      </div>
       <div class="gantt-scroll">
         <div class="gantt-header">
-          <div class="gantt-label" style="justify-content:center;"><span class="faint mono" style="font-size:10px;">항목 (${tasks.length})</span></div>
+          <div class="gantt-label" style="justify-content:center;"><span class="faint mono" style="font-size:10px;">회차 (${totalTaskCount}건)</span></div>
           <div class="gantt-timeline" style="width:${timelineWidth}px;height:32px;">${monthMarkers}${todayLine}</div>
         </div>
         ${rows}
@@ -7017,18 +7047,7 @@ function drawGantt(){
     ${skippedCount? `<div class="faint" style="font-size:11.5px;margin-top:8px;">※ 날짜 미설정 ${skippedCount}건은 간트차트에 표시되지 않습니다.</div>`:''}
   `;
 }
-function monthGridForRow(minDate,maxDate,pxPerDay){
-  let html='';
-  let d = new Date(minDate.getFullYear(), minDate.getMonth(), 1);
-  while(d<=maxDate){
-    const offset = Math.round((d-minDate)/(1000*60*60*24));
-    if(offset>=0) html += `<div class="gantt-gridline" style="left:${offset*pxPerDay}px;"></div>`;
-    d.setMonth(d.getMonth()+1);
-  }
-  const todayOffset = Math.round((new Date(todayISO())-minDate)/(1000*60*60*24));
-  if(todayOffset>=0) html += `<div class="gantt-today" style="left:${todayOffset*pxPerDay}px;"></div>`;
-  return html;
-}
+
 
 /* ============================================================
    MODAL SYSTEM
